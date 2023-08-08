@@ -1,0 +1,21 @@
+{
+  "name": "GRAMMAR_NAME",
+  "rules": {
+    "hello/there": {
+      "type": "STRING",
+      "value": "general/kenobi"
+    }
+  },
+  "extras": [
+    {
+      "type": "PATTERN",
+      "value": "\\s"
+    }
+  ],
+  "conflicts": [],
+  "precedences": [],
+  "externals": [],
+  "inline": [],
+  "supertypes": []
+}
+

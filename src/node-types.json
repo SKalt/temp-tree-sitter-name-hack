@@ -1,0 +1,11 @@
+[
+  {
+    "type": "hello/there",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "general/kenobi",
+    "named": false
+  }
+]
