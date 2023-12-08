@@ -6,31 +6,43 @@
 #endif
 
 #define LANGUAGE_VERSION 14
-#define STATE_COUNT 4
-#define LARGE_STATE_COUNT 2
-#define SYMBOL_COUNT 3
+#define STATE_COUNT 5
+#define LARGE_STATE_COUNT 4
+#define SYMBOL_COUNT 7
 #define ALIAS_COUNT 0
-#define TOKEN_COUNT 2
+#define TOKEN_COUNT 5
 #define EXTERNAL_TOKEN_COUNT 0
 #define FIELD_COUNT 0
-#define MAX_ALIAS_SEQUENCE_LENGTH 1
+#define MAX_ALIAS_SEQUENCE_LENGTH 2
 #define PRODUCTION_ID_COUNT 1
 
 enum {
-  anon_sym_general_SLASHkenobi = 1,
-  sym_hello_SLASHthere = 2,
+  sym_with_SLASHslashes = 1,
+  sym_with_DOTdots = 2,
+  sym_withspaces = 3,
+  sym_ = 4,
+  sym_cursed_program = 5,
+  aux_sym_cursed_program_repeat1 = 6,
 };
 
 static const char * const ts_symbol_names[] = {
   [ts_builtin_sym_end] = "end",
-  [anon_sym_general_SLASHkenobi] = "general/kenobi",
-  [sym_hello_SLASHthere] = "hello/there",
+  [sym_with_SLASHslashes] = "with/slashes",
+  [sym_with_DOTdots] = "with.dots",
+  [sym_withspaces] = "with spaces",
+  [sym_] = "✨",
+  [sym_cursed_program] = "cursed_program",
+  [aux_sym_cursed_program_repeat1] = "cursed_program_repeat1",
 };
 
 static const TSSymbol ts_symbol_map[] = {
   [ts_builtin_sym_end] = ts_builtin_sym_end,
-  [anon_sym_general_SLASHkenobi] = anon_sym_general_SLASHkenobi,
-  [sym_hello_SLASHthere] = sym_hello_SLASHthere,
+  [sym_with_SLASHslashes] = sym_with_SLASHslashes,
+  [sym_with_DOTdots] = sym_with_DOTdots,
+  [sym_withspaces] = sym_withspaces,
+  [sym_] = sym_,
+  [sym_cursed_program] = sym_cursed_program,
+  [aux_sym_cursed_program_repeat1] = aux_sym_cursed_program_repeat1,
 };
 
 static const TSSymbolMetadata ts_symbol_metadata[] = {
@@ -38,13 +50,29 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = false,
     .named = true,
   },
-  [anon_sym_general_SLASHkenobi] = {
-    .visible = true,
-    .named = false,
-  },
-  [sym_hello_SLASHthere] = {
+  [sym_with_SLASHslashes] = {
     .visible = true,
     .named = true,
+  },
+  [sym_with_DOTdots] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_withspaces] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_] = {
+    .visible = true,
+    .named = true,
+  },
+  [sym_cursed_program] = {
+    .visible = true,
+    .named = true,
+  },
+  [aux_sym_cursed_program_repeat1] = {
+    .visible = false,
+    .named = false,
   },
 };
 
@@ -61,6 +89,7 @@ static const TSStateId ts_primary_state_ids[STATE_COUNT] = {
   [1] = 1,
   [2] = 2,
   [3] = 3,
+  [4] = 4,
 };
 
 static bool ts_lex(TSLexer *lexer, TSStateId state) {
@@ -68,57 +97,33 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
   eof = lexer->eof(lexer);
   switch (state) {
     case 0:
-      if (eof) ADVANCE(14);
-      if (lookahead == 'g') ADVANCE(4);
+      if (eof) ADVANCE(2);
+      if (lookahead == '.') ADVANCE(4);
+      if (lookahead == '/') ADVANCE(3);
+      if (lookahead == '_') ADVANCE(5);
+      if (lookahead == 10024) ADVANCE(1);
       if (lookahead == '\t' ||
           lookahead == '\n' ||
           lookahead == '\r' ||
           lookahead == ' ') SKIP(0)
       END_STATE();
     case 1:
-      if (lookahead == '/') ADVANCE(8);
+      if (lookahead == 9989) ADVANCE(6);
       END_STATE();
     case 2:
-      if (lookahead == 'a') ADVANCE(9);
-      END_STATE();
-    case 3:
-      if (lookahead == 'b') ADVANCE(7);
-      END_STATE();
-    case 4:
-      if (lookahead == 'e') ADVANCE(11);
-      END_STATE();
-    case 5:
-      if (lookahead == 'e') ADVANCE(13);
-      END_STATE();
-    case 6:
-      if (lookahead == 'e') ADVANCE(10);
-      END_STATE();
-    case 7:
-      if (lookahead == 'i') ADVANCE(15);
-      END_STATE();
-    case 8:
-      if (lookahead == 'k') ADVANCE(6);
-      END_STATE();
-    case 9:
-      if (lookahead == 'l') ADVANCE(1);
-      END_STATE();
-    case 10:
-      if (lookahead == 'n') ADVANCE(12);
-      END_STATE();
-    case 11:
-      if (lookahead == 'n') ADVANCE(5);
-      END_STATE();
-    case 12:
-      if (lookahead == 'o') ADVANCE(3);
-      END_STATE();
-    case 13:
-      if (lookahead == 'r') ADVANCE(2);
-      END_STATE();
-    case 14:
       ACCEPT_TOKEN(ts_builtin_sym_end);
       END_STATE();
-    case 15:
-      ACCEPT_TOKEN(anon_sym_general_SLASHkenobi);
+    case 3:
+      ACCEPT_TOKEN(sym_with_SLASHslashes);
+      END_STATE();
+    case 4:
+      ACCEPT_TOKEN(sym_with_DOTdots);
+      END_STATE();
+    case 5:
+      ACCEPT_TOKEN(sym_withspaces);
+      END_STATE();
+    case 6:
+      ACCEPT_TOKEN(sym_);
       END_STATE();
     default:
       return false;
@@ -130,39 +135,64 @@ static const TSLexMode ts_lex_modes[STATE_COUNT] = {
   [1] = {.lex_state = 0},
   [2] = {.lex_state = 0},
   [3] = {.lex_state = 0},
+  [4] = {.lex_state = 0},
 };
 
 static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   [0] = {
     [ts_builtin_sym_end] = ACTIONS(1),
-    [anon_sym_general_SLASHkenobi] = ACTIONS(1),
+    [sym_with_SLASHslashes] = ACTIONS(1),
+    [sym_with_DOTdots] = ACTIONS(1),
+    [sym_withspaces] = ACTIONS(1),
+    [sym_] = ACTIONS(1),
   },
   [1] = {
-    [sym_hello_SLASHthere] = STATE(3),
-    [anon_sym_general_SLASHkenobi] = ACTIONS(3),
+    [sym_cursed_program] = STATE(4),
+    [aux_sym_cursed_program_repeat1] = STATE(2),
+    [ts_builtin_sym_end] = ACTIONS(3),
+    [sym_with_SLASHslashes] = ACTIONS(5),
+    [sym_with_DOTdots] = ACTIONS(5),
+    [sym_withspaces] = ACTIONS(5),
+    [sym_] = ACTIONS(5),
+  },
+  [2] = {
+    [aux_sym_cursed_program_repeat1] = STATE(3),
+    [ts_builtin_sym_end] = ACTIONS(7),
+    [sym_with_SLASHslashes] = ACTIONS(9),
+    [sym_with_DOTdots] = ACTIONS(9),
+    [sym_withspaces] = ACTIONS(9),
+    [sym_] = ACTIONS(9),
+  },
+  [3] = {
+    [aux_sym_cursed_program_repeat1] = STATE(3),
+    [ts_builtin_sym_end] = ACTIONS(11),
+    [sym_with_SLASHslashes] = ACTIONS(13),
+    [sym_with_DOTdots] = ACTIONS(13),
+    [sym_withspaces] = ACTIONS(13),
+    [sym_] = ACTIONS(13),
   },
 };
 
 static const uint16_t ts_small_parse_table[] = {
   [0] = 1,
-    ACTIONS(5), 1,
-      ts_builtin_sym_end,
-  [4] = 1,
-    ACTIONS(7), 1,
+    ACTIONS(16), 1,
       ts_builtin_sym_end,
 };
 
 static const uint32_t ts_small_parse_table_map[] = {
-  [SMALL_STATE(2)] = 0,
-  [SMALL_STATE(3)] = 4,
+  [SMALL_STATE(4)] = 0,
 };
 
 static const TSParseActionEntry ts_parse_actions[] = {
   [0] = {.entry = {.count = 0, .reusable = false}},
   [1] = {.entry = {.count = 1, .reusable = false}}, RECOVER(),
-  [3] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
-  [5] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_hello_SLASHthere, 1),
-  [7] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
+  [3] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_cursed_program, 0),
+  [5] = {.entry = {.count = 1, .reusable = true}}, SHIFT(2),
+  [7] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_cursed_program, 1),
+  [9] = {.entry = {.count = 1, .reusable = true}}, SHIFT(3),
+  [11] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym_cursed_program_repeat1, 2),
+  [13] = {.entry = {.count = 2, .reusable = true}}, REDUCE(aux_sym_cursed_program_repeat1, 2), SHIFT_REPEAT(3),
+  [16] = {.entry = {.count = 1, .reusable = true}},  ACCEPT_INPUT(),
 };
 
 #ifdef __cplusplus

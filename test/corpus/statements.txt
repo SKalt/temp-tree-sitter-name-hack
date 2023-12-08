@@ -1,0 +1,30 @@
+=======
+slashes
+=======
+/
+---
+(cursed_program (with/slashes))
+
+=======
+dots
+=======
+.
+-------
+(cursed_program (with.dots))
+
+=======
+spaces
+=======
+/_/
+-------
+(cursed_program
+  (with/slashes)
+  (with spaces)
+  (with/slashes))
+
+======
+emoji
+======
+✨✅
+------
+(cursed_program (✨))

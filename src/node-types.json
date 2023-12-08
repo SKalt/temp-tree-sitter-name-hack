@@ -1,11 +1,45 @@
 [
   {
-    "type": "hello/there",
+    "type": "cursed_program",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "with spaces",
+          "named": true
+        },
+        {
+          "type": "with.dots",
+          "named": true
+        },
+        {
+          "type": "with/slashes",
+          "named": true
+        },
+        {
+          "type": "✨",
+          "named": true
+        }
+      ]
+    }
   },
   {
-    "type": "general/kenobi",
-    "named": false
+    "type": "with spaces",
+    "named": true
+  },
+  {
+    "type": "with.dots",
+    "named": true
+  },
+  {
+    "type": "with/slashes",
+    "named": true
+  },
+  {
+    "type": "✨",
+    "named": true
   }
 ]

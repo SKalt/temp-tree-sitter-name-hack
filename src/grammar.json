@@ -1,9 +1,45 @@
 {
   "name": "GRAMMAR_NAME",
   "rules": {
-    "hello/there": {
+    "cursed_program": {
+      "type": "REPEAT",
+      "content": {
+        "type": "CHOICE",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "with/slashes"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "with.dots"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "with spaces"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "✨"
+          }
+        ]
+      }
+    },
+    "with/slashes": {
       "type": "STRING",
-      "value": "general/kenobi"
+      "value": "/"
+    },
+    "with.dots": {
+      "type": "STRING",
+      "value": "."
+    },
+    "with spaces": {
+      "type": "STRING",
+      "value": "_"
+    },
+    "✨": {
+      "type": "STRING",
+      "value": "✨✅"
     }
   },
   "extras": [
